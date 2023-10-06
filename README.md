@@ -1,6 +1,4 @@
-**Docker x Apache x VS Code**  
-Web Development Environment Setup Guide (Windows 10/11)
-=======================================================================================
+# Docker x Apache x VS Code Web Dev Environment (Windows 10/11)
 
 ## Overview
 
