@@ -1,0 +1,118 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Web Development Environment Setup Guide</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="A Docker, Apache, and VS Code (DAVS) development environment setup guide"
+    />
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <link rel="icon" href="favicon.png" />
+  </head>
+  <body>
+    <h1>
+      <strong>Docker x Apache x VS Code</strong>
+      <br />
+      Web Development Environment Setup Guide (Windows 10/11)
+    </h1>
+    <h2>Overview</h2>
+    <p>
+      This is a Dockerized web development environment using Apache as a web
+      server, set up to work with Visual Studio Code. This environment delivers
+      static pages, so it does not include any server-side architecture. Since
+      Apache is setup to listen on
+      <code>localhost:8080</code> since this is intended as a development
+      environment, but this can be changed within my-httpd.conf. This setup is
+      verified to work on Windows 10/11.
+    </p>
+    <h2>Installation</h2>
+    <h3>Requirements</h3>
+    <ol>
+      <li>
+        <a href="https://code.visualstudio.com/">Visual Studio Code</a>
+        <ul>
+          <li>
+            Install extension:
+            <a
+              href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers"
+              >Dev Containers</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="https://www.docker.com/get-started/">Docker</a> (Tested with
+        Docker for Windows)
+      </li>
+    </ol>
+    <h3>Steps</h3>
+    <ol>
+      <li>Install requirements</li>
+      <li>Clone this repo</li>
+      <li>Ensure Docker is running, then open Visual Studio Code.</li>
+      <li>
+        Open the folder from the repo in VS Code
+        <ol>
+          <li>File > Open Folder... > Browse to the repo folder > Open</li>
+        </ol>
+      </li>
+      <li>
+        Reopen VS Code in the Docker container
+        <ol>
+          <li>Hit <kbd>F1</kbd></li>
+          <li>
+            In the VS Code command palette, run
+            <code>Dev Containers: Reopen in Container</code>
+          </li>
+        </ol>
+      </li>
+      <li>
+        Once VS Code loads with the container, you can now go to
+        <code>localhost:8080</code>
+        in your browser and see this guide!
+      </li>
+    </ol>
+    <h2>Usage</h2>
+    <ul>
+      <li>
+        <code>.devcontainer/Dockerfile</code>
+        <ul>
+          <li>
+            This contains information about the Docker image that the container
+            uses.
+          </li>
+          <li>
+            <a href="https://docs.docker.com/engine/reference/builder/"
+              >Full specification for <code>Dockerfile</code> here.</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li>
+        <code>.devcontainer/devcontainer.json</code>
+        <ul>
+          <li>
+            Contains useful info about the container and how it interacts with
+            VS Code. Port forwarding ports, commands to run on container start,
+            VS Code extensions this container uses, etc.
+          </li>
+          <li>
+            <a href="https://containers.dev/implementors/json_reference/"
+              >Full specification for <code>devcontainer.json</code> here.</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li>
+        <code>public-html</code>
+        <ul>
+          <li>
+            Directory of web pages that Apache displays to
+            <code>localhost:8080</code>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </body>
+</html>
