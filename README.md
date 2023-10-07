@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a Dockerized web development environment using Apache as a web server, set up to work with Visual Studio Code. This environment delivers static pages, so it does not include any server-side architecture. Since Apache is setup to listen on `localhost:8080` since this is intended as a development environment, but this can be changed within my-httpd.conf. This setup is verified to work on Windows 10/11.
+This is a Dockerized web development environment using Apache as a web server, set up to work with Visual Studio Code. This environment delivers static pages, so it does not include any server-side architecture. Apache is setup to listen on `localhost:8080` since this is intended as a development environment, but this can be changed within `my-httpd.conf`. This setup is verified to work on Windows 10/11.
 
 ## Installation
 
@@ -14,11 +14,26 @@ This is a Dockerized web development environment using Apache as a web server, s
 
 ### Steps
 
+#### Using GitHub in VS Code
+
+Utilizing GitHub through VS Code allows you to push to your GitHub repo easily within the Docker container.
+
+1.  Install requirements
+2.  Clone this repo and push to GitHub
+3.  Ensure Docker is running, then open Visual Studio Code.
+4.  Hit F1
+5.  In the VS Code command palette, run `Dev Containers: Clone Repository in Container Volume`
+    - If prompted, sign into GitHub
+6.  Choose your forked repo
+7.  Once VS Code loads with the container, you can now go to `localhost:8080` in your browser and see this guide!
+
+#### Without GitHub in VS Code
+
 1.  Install requirements
 2.  Clone this repo
 3.  Ensure Docker is running, then open Visual Studio Code.
 4.  Open the folder from the repo in VS Code
-    1.  File > Open Folder... > Browse to the repo folder > Open
+    - File > Open Folder... > Browse to the repo folder > Open
 5.  Reopen VS Code in the Docker container
     1.  Hit F1
     2.  In the VS Code command palette, run `Dev Containers: Reopen in Container`
@@ -26,11 +41,21 @@ This is a Dockerized web development environment using Apache as a web server, s
 
 ## Usage
 
-- `.devcontainer/Dockerfile`
-  - This contains information about the Docker image that the container uses.
-  - [Full specification for `Dockerfile` here.](https://docs.docker.com/engine/reference/builder/)
-- `.devcontainer/devcontainer.json`
-  - Contains useful info about the container and how it interacts with VS Code. Port forwarding ports, commands to run on container start, VS Code extensions this container uses, etc.
-  - [Full specification for `devcontainer.json` here.](https://containers.dev/implementors/json_reference/)
-- `public-html`
-  - Directory of web pages that Apache displays to `localhost:8080`
+`.devcontainer/Dockerfile`
+
+- Dockerfile contains information about the Docker image that the container uses.
+- [Full specification for `Dockerfile` here.](https://docs.docker.com/engine/reference/builder/)
+
+`.devcontainer/devcontainer.json`
+
+- Devcontainer contains useful information about the container and how it interacts with VS Code. Port forwarding ports, commands to run on container start, VS Code extensions this container uses, etc.
+- [Full specification for `devcontainer.json` here.](https://containers.dev/implementors/json_reference/)
+
+`public-html/`
+
+- Directory of web pages that Apache displays to `localhost:8080`
+
+`my-httpd.conf`
+
+- Apache server settings file full of configuration directives.
+- [Full specification for the Apache config file here.](http://httpd.apache.org/docs/2.4/mod/directives.html)
