@@ -23,7 +23,7 @@ Utilizing GitHub through VS Code allows you to push to your GitHub repo easily w
 3.  Ensure Docker is running, then open Visual Studio Code.
 4.  Hit F1
 5.  In the VS Code command palette, run `Dev Containers: Clone Repository in Container Volume`
-    - If prompted, sign into GitHub
+    - If prompted, sign into GitHub. For different authentication methods into GitHub, check the [About authentication to GitHub](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github#authenticating-to-the-api-with-a-personal-access-token) article
 6.  Choose your forked repo
 7.  Once VS Code loads with the container, you can now go to `localhost:8080` in your browser and see this guide!
 
