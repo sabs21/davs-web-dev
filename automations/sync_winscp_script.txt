@@ -1,0 +1,3 @@
+open %winscp_protocol%://%winscp_username%@%winscp_host%:%winscp_port%/ -hostkey=%winscp_hostkey%
+synchronize remote %winscp_local% %winscp_remote% -delete
+exit

@@ -1,0 +1,27 @@
+:: This file is meant to act as a placeholder for you to fill in values that will be used by sync_winscp.bat. 
+:: To use the sync_winscp.bat script, you must fill in each value below and then rename this file to sync_winscp_defaults.bat.
+
+:: Transfer Protocol
+:: The method in which files get transferred from your computer to the server
+:: sftp, ftp, scp, s3, for FTP over implicit TLS/SSL use ftps, for FTP over explicit TLS/SSL use ftpes, for WebDAV use http, for WebDAV over TLS/SSL use https
+set winscp_protocol=
+:: Server Host
+:: The name of the server to connect to
+set winscp_host=
+:: Server Port
+:: The communication endpoint when connecting to a server. SSh uses port 22, FTP uses port 21 for WinSCP's sake.
+set winscp_port=
+:: Server Username
+:: Your username for authenticating onto the remote Server
+set winscp_username=
+:: Server Hostkey
+:: An identifying code generated as part of the SSH protocol to defend against spoofing. To get the hostkey on WinSCP's GUI, first connect to the remote server, then go to Tabs > Server/Protocol Information. You'll want both the algorithm and the hash (likely SHA-256) values for the syntax shown below.
+:: Syntax: Algorithm Hash 
+:: Example: ssh-rsa 3072 4cA6A4SEa50fRFwLluS2hcGTRRZX2ed0FR71xZZq2Kc
+set winscp_hostkey=
+:: Local Directory to Sync
+:: All file changes in this directory will transfer to the remote directory.
+set winscp_local=
+:: Remote Directory to Sync
+:: All files in this directory will adjust to match files in the local directory.
+set winscp_remote=
