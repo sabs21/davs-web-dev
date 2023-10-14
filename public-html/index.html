@@ -151,20 +151,24 @@
                         <code>sync_winscp_defaults.example</code>
                         <ul>
                             <li>
-                                Filling the variables in this file and changing the extension to ".bat" is necessary to
-                                be able to run sync_winscp.bat. This file contains comments outlining information about
-                                each variable and what it's for.
+                                This file contains comments outlining information about each variable and what it's for.
                             </li>
+                            <li>
+                                Filling the variables in this file and changing the extension to ".bat" is necessary to
+                                be able to run sync_winscp.bat.
+                            </li>
+                            <li>Requires <a href="https://winscp.net/eng/index.php">WinSCP</a>.</li>
                         </ul>
                     </li>
                 </ul>
                 <code>sync_winscp.bat</code>
                 <ul>
                     <li>
-                        Compares files in a local directory, then translates/synchronizes all differences to a remote
-                        directory. (Requires configuration and file extension change of
+                        Use WinSCP to compare files in a local directory, then translates/synchronizes all differences
+                        to a remote directory. (Requires configuration and file extension change of
                         automations/env/sync_winscp_defaults.example)
                     </li>
+                    <li>Requires <a href="https://winscp.net/eng/index.php">WinSCP</a>.</li>
                 </ul>
                 <code>sync_winscp_script.bat</code>
                 <ul>
@@ -174,6 +178,7 @@
                             >The scripts code follows automation info from WinSCP CLI documentation.</a
                         >
                     </li>
+                    <li>Requires <a href="https://winscp.net/eng/index.php">WinSCP</a>.</li>
                 </ul>
             </li>
         </ul>

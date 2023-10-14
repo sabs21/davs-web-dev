@@ -1,6 +1,8 @@
 :: This file is meant to act as a placeholder for you to fill in values that will be used by sync_winscp.bat. 
 :: To use the sync_winscp.bat script, you must fill in each value below and then change the extension of this file from ".example" to ".bat". In other words, sync_winscp_defaults.example becomes sync_winscp_defaults.bat
 
+:: Requires WinSCP (https://winscp.net/eng/index.php)
+
 :: Transfer Protocol
 :: The method in which files get transferred from your computer to the server.
 :: sftp, ftp, scp, s3, for FTP over implicit TLS/SSL use ftps, for FTP over explicit TLS/SSL use ftpes, for WebDAV use http, for WebDAV over TLS/SSL use https
