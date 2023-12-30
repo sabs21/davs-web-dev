@@ -1,186 +1,198 @@
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Web Development Environment Setup Guide</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <meta name="description" content="A Docker, Apache, and VS Code (DAVS) development environment setup guide" />
-        <link rel="stylesheet" type="text/css" href="index.css" />
-        <link rel="icon" href="favicon.png" />
-    </head>
-    <body>
-        <h1>
-            <strong>Docker x Apache x VS Code</strong>
-            <br />
-            Web Development Environment Setup Guide (Windows 10/11)
-        </h1>
-        <h2>Overview</h2>
-        <p>
-            This is a Dockerized web development environment using Apache as a web server, set up to work with Visual
-            Studio Code. This environment delivers static pages, so it does not include any server-side architecture.
-            Apache is setup to listen on
-            <code>localhost:8080</code> since this is intended as a development environment, but this can be changed
-            within <code>my-httpd.conf</code>. This setup is verified to work on Windows 10/11.
-        </p>
-        <h2>Installation</h2>
-        <h3>Requirements</h3>
-        <ol>
-            <li>
-                <a href="https://code.visualstudio.com/">Visual Studio Code</a>
-                <ul>
-                    <li>
-                        Install extension:
-                        <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers"
-                            >Dev Containers</a
-                        >
-                    </li>
-                </ul>
-            </li>
-            <li><a href="https://www.docker.com/get-started/">Docker</a> (Tested with Docker for Windows)</li>
-        </ol>
-        <h3>Optional</h3>
-        <ol>
-            <li>
-                <a href="https://winscp.net/eng/index.php">WinSCP</a>
-            </li>
-        </ol>
-        <h3>Steps</h3>
-        <h4>Using GitHub in VS Code</h4>
-        Utilizing GitHub through VS Code allows you to push to your GitHub repo easily within the Docker container.
-        <ol>
-            <li>Install requirements</li>
-            <li>Clone this repo and push to GitHub</li>
-            <li>Ensure Docker is running, then open Visual Studio Code.</li>
-            <li>Hit <kbd>F1</kbd></li>
-            <li>
-                In the VS Code command palette, run
-                <code>Dev Containers: Clone Repository in Container Volume</code>
-                <ul>
-                    <li>
-                        If prompted, sign into GitHub. For different authentication methods into GitHub, check the
-                        <a
-                            href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github#authenticating-to-the-api-with-a-personal-access-token"
-                            >About authentication to GitHub</a
-                        >
-                        article
-                    </li>
-                </ul>
-            </li>
-            <li>Choose your forked repo</li>
-            <li>
-                Once VS Code loads with the container, you can now go to
-                <code>localhost:8080</code>
-                in your browser and see this guide!
-            </li>
-        </ol>
-        <h4>Without GitHub in VS Code</h4>
-        <ol>
-            <li>Install requirements</li>
-            <li>Clone this repo</li>
-            <li>Ensure Docker is running, then open Visual Studio Code.</li>
-            <li>
-                Open the folder from the repo in VS Code
-                <ul>
-                    <li>File > Open Folder... > Browse to the repo folder > Open</li>
-                </ul>
-            </li>
-            <li>
-                Reopen VS Code in the Docker container
-                <ol>
-                    <li>Hit <kbd>F1</kbd></li>
-                    <li>
-                        In the VS Code command palette, run
-                        <code>Dev Containers: Reopen in Container</code>
-                    </li>
-                </ol>
-            </li>
-            <li>
-                Once VS Code loads with the container, you can now go to
-                <code>localhost:8080</code>
-                in your browser and see this guide!
-            </li>
-        </ol>
-        <h2>Usage</h2>
-        <code>.devcontainer/Dockerfile</code>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Web Development Environment Setup Guide</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="A Docker, Apache, and VS Code (DAVS) development environment setup guide"
+    />
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <link rel="icon" href="favicon.png" />
+  </head>
+  <body>
+    <h1>
+      <strong>Docker x Apache x VS Code</strong>
+      <br />
+      Web Development Environment Setup Guide (Windows 10/11)
+    </h1>
+    <h2>Overview</h2>
+    <p>
+      This is a Dockerized web development environment using Apache as a web
+      server, set up to work with Visual Studio Code. This environment delivers
+      static pages, so it does not include any server-side architecture. Apache
+      is setup to listen on
+      <code>localhost:8080</code> since this is intended as a development
+      environment, but this can be changed within <code>my-httpd.conf</code>.
+      This setup is verified to work on Windows 10/11.
+    </p>
+    <h3>Usage</h3>
+    <p>
+      The <code>public-html</code> folder is bound to apache's
+      <code>htdocs</code> folder inside the container. Any changes made in the
+      container will automatically reflect in <code>public-html</code>. This
+      allows you to handle git outside of the container.
+      <br />
+      <br />
+      If you use
+      <a href="https://winscp.net/eng/index.php">WinSCP</a> to SFTP files to
+      your web server, then you can use
+      <code>/automations/sync_winscp.bat</code> to sync files in
+      <code>public-html</code> with your web server's
+      <code>htdocs</code> folder. To get started, read and fill out
+      <code>/automations/env/sync_winscp_defaults.example</code>. Once finished,
+      rename the file to <code>sync_winscp_defaults.bat</code>.
+    </p>
+    <h2>Installation</h2>
+    <h3>Requirements</h3>
+    <ol>
+      <li>
+        <a href="https://code.visualstudio.com/">Visual Studio Code</a>
         <ul>
-            <li>Dockerfile contains information about the Docker image that the container uses.</li>
-            <li>
-                <a href="https://docs.docker.com/engine/reference/builder/"
-                    >Full specification for <code>Dockerfile</code> here.</a
-                >
-            </li>
+          <li>
+            Install extension:
+            <a
+              href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers"
+              >Dev Containers</a
+            >
+          </li>
         </ul>
-        <code>.devcontainer/devcontainer.json</code>
+      </li>
+      <li>
+        <a href="https://www.docker.com/get-started/">Docker</a> (Tested with
+        Docker for Windows)
+      </li>
+    </ol>
+    <h3>Optional</h3>
+    <ol>
+      <li>
+        <a href="https://winscp.net/eng/index.php">WinSCP</a>
+      </li>
+    </ol>
+    <h3>Steps</h3>
+    <ol>
+      <li>Install requirements.</li>
+      <li>Clone this repo.</li>
+      <li>Open Docker and Visual Studio Code.</li>
+      <li>Hit <kbd>F1</kbd> to open the command palette.</li>
+      <li>
+        In the VS Code command palette, run
+        <code>Dev Containers: Reopen in Container</code>
         <ul>
-            <li>
-                Devcontainer contains useful information about the container and how it interacts with VS Code. Port
-                forwarding ports, commands to run on container start, VS Code extensions this container uses, etc.
-            </li>
-            <li>
-                <a href="https://containers.dev/implementors/json_reference/"
-                    >Full specification for <code>devcontainer.json</code> here.</a
-                >
-            </li>
+          <li>
+            If prompted, sign into GitHub. For different authentication methods
+            into GitHub, check the
+            <a
+              href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github#authenticating-to-the-api-with-a-personal-access-token"
+              >About authentication to GitHub</a
+            >
+            article
+          </li>
         </ul>
-        <code>public-html/</code>
+      </li>
+      <li>
+        Once VS Code loads with the container, you can now go to
+        <code>localhost:8080</code>
+        in your browser and see this guide!
+      </li>
+    </ol>
+    <h2>Extra Information</h2>
+    <code>Dockerfile</code>
+    <ul>
+      <li>
+        Dockerfile contains information about the Docker image that the
+        container uses.
+      </li>
+      <li>
+        <a href="https://docs.docker.com/engine/reference/builder/"
+          >Full specification for <code>Dockerfile</code> here.</a
+        >
+      </li>
+    </ul>
+    <code>.devcontainer.json</code>
+    <ul>
+      <li>
+        Devcontainer contains useful information about the container and how it
+        interacts with VS Code. Port forwarding ports, commands to run on
+        container start, VS Code extensions this container uses, etc.
+      </li>
+      <li>
+        <a href="https://containers.dev/implementors/json_reference/"
+          >Full specification for <code>devcontainer.json</code> here.</a
+        >
+      </li>
+    </ul>
+    <code>public-html/</code>
+    <ul>
+      <li>
+        Directory of web pages that Apache displays to
+        <code>localhost:8080</code>
+      </li>
+    </ul>
+    <code>my-httpd.conf</code>
+    <ul>
+      <li>Apache server settings file full of configuration directives.</li>
+      <li>
+        <a href="http://httpd.apache.org/docs/2.4/mod/directives.html"
+          >Full specification for the Apache config file here.</a
+        >
+      </li>
+    </ul>
+    <code>automations/</code>
+    <ul>
+      <li>
+        Directory of batch scripts that perform common, repetitive actions.
+      </li>
+      <li>
+        <code>env/</code>
         <ul>
-            <li>
-                Directory of web pages that Apache displays to
-                <code>localhost:8080</code>
-            </li>
+          <li>
+            Folder containing potentially private/sensitive values that should
+            not be pushed to a repository.
+          </li>
+          <li>
+            <code>sync_winscp_defaults.example</code>
+            <ul>
+              <li>
+                This file contains comments outlining information about each
+                variable and what it's for.
+              </li>
+              <li>
+                Filling the variables in this file and changing the extension to
+                ".bat" is necessary to be able to run sync_winscp.bat.
+              </li>
+              <li>
+                Requires <a href="https://winscp.net/eng/index.php">WinSCP</a>.
+              </li>
+            </ul>
+          </li>
         </ul>
-        <code>my-httpd.conf</code>
+        <code>sync_winscp.bat</code>
         <ul>
-            <li>Apache server settings file full of configuration directives.</li>
-            <li>
-                <a href="http://httpd.apache.org/docs/2.4/mod/directives.html"
-                    >Full specification for the Apache config file here.</a
-                >
-            </li>
+          <li>
+            Use WinSCP to compare files in a local directory, then
+            translates/synchronizes all differences to a remote directory.
+            (Requires configuration and file extension change of
+            automations/env/sync_winscp_defaults.example)
+          </li>
+          <li>
+            Requires <a href="https://winscp.net/eng/index.php">WinSCP</a>.
+          </li>
         </ul>
-        <code>automations/</code>
+        <code>sync_winscp_script.bat</code>
         <ul>
-            <li>Directory of batch scripts that perform common, repetitive actions.</li>
-            <li>
-                <code>env/</code>
-                <ul>
-                    <li>
-                        Folder containing potentially private/sensitive values that should not be pushed to a
-                        repository.
-                    </li>
-                    <li>
-                        <code>sync_winscp_defaults.example</code>
-                        <ul>
-                            <li>
-                                This file contains comments outlining information about each variable and what it's for.
-                            </li>
-                            <li>
-                                Filling the variables in this file and changing the extension to ".bat" is necessary to
-                                be able to run sync_winscp.bat.
-                            </li>
-                            <li>Requires <a href="https://winscp.net/eng/index.php">WinSCP</a>.</li>
-                        </ul>
-                    </li>
-                </ul>
-                <code>sync_winscp.bat</code>
-                <ul>
-                    <li>
-                        Use WinSCP to compare files in a local directory, then translates/synchronizes all differences
-                        to a remote directory. (Requires configuration and file extension change of
-                        automations/env/sync_winscp_defaults.example)
-                    </li>
-                    <li>Requires <a href="https://winscp.net/eng/index.php">WinSCP</a>.</li>
-                </ul>
-                <code>sync_winscp_script.bat</code>
-                <ul>
-                    <li>Helper file used by sync_winscp.bat.</li>
-                    <li>
-                        <a href="https://winscp.net/eng/docs/guide_automation"
-                            >The scripts code follows automation info from WinSCP CLI documentation.</a
-                        >
-                    </li>
-                    <li>Requires <a href="https://winscp.net/eng/index.php">WinSCP</a>.</li>
-                </ul>
-            </li>
+          <li>Helper file used by sync_winscp.bat.</li>
+          <li>
+            <a href="https://winscp.net/eng/docs/guide_automation"
+              >The scripts code follows automation info from WinSCP CLI
+              documentation.</a
+            >
+          </li>
+          <li>
+            Requires <a href="https://winscp.net/eng/index.php">WinSCP</a>.
+          </li>
         </ul>
-    </body>
+      </li>
+    </ul>
+  </body>
 </html>

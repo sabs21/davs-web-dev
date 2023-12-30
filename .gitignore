@@ -1,3 +1,0 @@
-.docker
-automations/env/*
-!automations/env/*.example

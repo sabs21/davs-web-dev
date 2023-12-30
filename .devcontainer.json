@@ -1,0 +1,13 @@
+{
+  "name": "Development Website",
+  "dockerComposeFile": "compose.yaml",
+  "service": "dev",
+  "forwardPorts": [8080],
+  "workspaceFolder": "/usr/local/apache2/htdocs",
+  "postStartCommand": "/usr/local/bin/httpd-foreground",
+  "customizations": {
+    "vscode": {
+      "extensions": ["esbenp.prettier-vscode"]
+    }
+  }
+}

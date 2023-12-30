@@ -1,0 +1,10 @@
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: website-dev
+    volumes:
+      - type: bind
+        source: ./public-html
+        target: /usr/local/apache2/htdocs
