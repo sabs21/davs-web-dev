@@ -3,7 +3,7 @@
 Overview
 --------
 
-This is a Dockerized web development environment using Apache as a web server, set up to work with Visual Studio Code. This environment delivers static pages, so it does not include any server-side architecture. Apache is setup to listen on `localhost:8080` since this is intended as a development environment, but this can be changed within `my-httpd.conf`. This setup is verified to work on Windows 10/11.
+This is a containerized web development environment using Apache as a web server, set up to work with Visual Studio Code. This environment delivers static pages, so it does not include any server-side architecture. Apache is setup to listen on `localhost:8080` since this is intended as a development environment, but this can be changed within `my-httpd.conf`. This setup is verified to work on Windows 10/11.
 
 ### Usage
 
